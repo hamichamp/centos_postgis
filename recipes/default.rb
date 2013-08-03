@@ -2,8 +2,6 @@
 # Cookbook Name:: centos_postgis
 # Recipe:: default
 #
-# Copyright 2013, Cityleash.com
-#
 # All rights reserved - Do Not Redistribute
 #
 
@@ -16,7 +14,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/#{elgis_filename}" do
   action :create_if_missing
   source elgis_url
   mode '0644'
-  backup true
+  backup 1
   not_if "rpm -qa | grep -qx '#{elgis_filename[0..-5]}'"
 end
 
@@ -31,7 +29,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/#{epel_filename}" do
   action :create_if_missing
   source epel_url
   mode '0644'
-  backup true
+  backup 1
   not_if "rpm -qa | grep -qx '#{epel_filename[0..-5]}'"
 end
 
